@@ -30,7 +30,7 @@ protocol CellConfigurator {
 
 
 // this class will be used to bind cellviewmodel to cell
-class TableViewCellConfigurator<CellType: ConfigurableCell, DataType>: CellConfigurator where CellType.DataType == DataType, CellType: UITableViewCell {
+class ListCellConfigurator<CellType: ConfigurableCell, DataType>: CellConfigurator where CellType.DataType == DataType, CellType: UIView {
     
     static var reuseId: String { return String(describing: CellType.self) }
     

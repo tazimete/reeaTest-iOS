@@ -8,7 +8,7 @@
 import Foundation
 
 /* Wrapper response of search api, which has array of dynamic search content like - movie */
-public struct SearchResponse<T: Codable>: Codable {
+struct SearchResponse<T: Codable>: Codable {
     public let page: Int?
     public let results: [T]?
     public let totalPages: Int?

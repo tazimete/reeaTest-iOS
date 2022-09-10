@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 class SearchViewController: BaseViewController {
     // MARK: Non UI Proeprties
@@ -27,10 +28,12 @@ class SearchViewController: BaseViewController {
         //cell registration
         tableView.register(SearchItemCell.self, forCellReuseIdentifier: SearchItemCellConfig.reuseId)
         tableView.register(SearchShimmerCell.self, forCellReuseIdentifier: ShimmerItemCellConfig.reuseId)
+        
+        tableView.rx.setDelegate(self).disposed(by: self.disposeBag)
         return tableView
     }()
     
-    let lblNoData: UILabel = {
+    private let lblNoData: UILabel = {
         let label = UILabel()
         label.text = "No data to show, Plz search by tapping on search button in top bar."
         label.textColor = .darkGray
@@ -55,6 +58,7 @@ class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
 
     // MARK: Overrriden Methods
@@ -65,8 +69,19 @@ class SearchViewController: BaseViewController {
         view.addSubview(lblNoData)
         
         //set anchor
-        tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 0, enableInsets: true)
-        lblNoData.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 0, enableInsets: true)
+        tableView.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
+        }
+        
+        lblNoData.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
+        }
         
         //table view
         onTapTableviewCell()
@@ -94,6 +109,11 @@ class SearchViewController: BaseViewController {
         self.navigationItem.rightBarButtonItem = btnSearch
     }
     
+    // MARK: Pagination 
+    override func hasMoreData() -> Bool {
+        return false
+    }
+    
     override func bindViewModel() {
         searchViewModel = (viewModel as! AbstractSearchViewModel)
         let searchInput = SearchViewModel.SearchInput(searchItemListTrigger: searchTrigger)
@@ -106,7 +126,7 @@ class SearchViewController: BaseViewController {
                     return UITableViewCell()
                 }
                 
-                return weakSelf.populateTableViewCell(viewModel: model.asCellViewModel, indexPath: IndexPath(row: row, section: 0), tableView: tableView)
+                return weakSelf.populateTableViewCell(viewModel: (model.asDomain?.asCellViewModel)!, indexPath: IndexPath(row: row, section: 0), tableView: tableView)
             }.disposed(by: disposeBag)
         
         // detect error
@@ -122,27 +142,14 @@ class SearchViewController: BaseViewController {
         }).disposed(by: disposeBag)
     }
     
-    public func searchMovie(name: String, year: Int) {
-        hideNoDataMessageView()
-        searchTrigger.onNext(SearchViewModel.SearchInputModel(query: name, year: year))
-    }
-    
-    private func hideNoDataMessageView() {
-        lblNoData.isHidden = true
-    }
-    
-    private func navigateToDetailsController(with movie: Movie) {
-        (view.window?.windowScene?.delegate as! SceneDelegate).rootCoordinator.showDetailsController(movie: movie)
-    }
-    
     //populate table view cell
     private func populateTableViewCell(viewModel: AbstractCellViewModel, indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-        var item: CellConfigurator = ShimmerItemCellConfig.init(item: SearchCellViewModel())
+        var item: CellConfigurator = ShimmerItemCellConfig.init(item: viewModel)
         
         // check actual data exists or not, to hide shimmer cell
-        if viewModel.id != nil {
-            item = SearchItemCellConfig.init(item: viewModel)
-        }
+//        if viewModel.id != nil {
+//            item = SearchItemCellConfig.init(item: viewModel)
+//        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId, for: indexPath)
         item.configure(cell: cell)
@@ -166,6 +173,19 @@ class SearchViewController: BaseViewController {
                 weakSelf.navigateToDetailsController(with: model)
             }
             .disposed(by: disposeBag)
+    }
+    
+    public func searchMovie(name: String, year: Int) {
+        hideNoDataMessageView()
+        searchTrigger.onNext(SearchViewModel.SearchInputModel(query: name, year: year))
+    }
+    
+    private func hideNoDataMessageView() {
+        lblNoData.isHidden = true
+    }
+    
+    private func navigateToDetailsController(with movie: Movie) {
+        (view.window?.windowScene?.delegate as! SceneDelegate).rootCoordinator.showDetailsController(movie: movie)
     }
     
     @objc func didTapSearchButton(sender : AnyObject){
@@ -202,3 +222,8 @@ class SearchViewController: BaseViewController {
     }
 }
 
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(120).adaptiveValue()
+    }
+}

@@ -12,10 +12,13 @@ import Foundation
  Base class for our server response
  */
 
-public protocol AbstractDataModel: AnyObject {
-    var id: Int? {get set}
+protocol AbstractDataEntity {
+    var id: Int? {get}
     
     //dictionary representation of this model 
     var asDictionary : [String: Any]? {get}
+    
+    //domain representation of this model
+    var asDomain : AbstractDomainEntity? {get}
 }
 

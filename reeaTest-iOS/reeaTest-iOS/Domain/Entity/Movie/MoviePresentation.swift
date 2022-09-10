@@ -1,23 +1,24 @@
 //
-//  Movie.swift
-//  setScheduleTest
+//  MoviePresentation.swift
+//  ReeaTest-iOS
 //
-//  Created by JMC on 31/10/21.
+//  Created by AGM Tazim on 10/9/22.
 //
 
 import Foundation
 
-/* Movie entity of search response */
-struct Movie: Codable {
-    public let id: Int?
-    public let originalTitle: String?
-    public let overview: String?
-    public let popularity: Float?
-    public let posterPath: String?
-    public let releaseDate: String?
-    public let title: String?
-    public let voteAverage: Float?
-    public let voteCount: Int?
+
+/* Movie presentation entity of search response */
+struct MoviePresentation: Codable, AbstractDomainEntity {
+    let id: Int?
+    let originalTitle: String?
+    let overview: String?
+    let popularity: Float?
+    let posterPath: String?
+    let releaseDate: String?
+    let title: String?
+    let voteAverage: Float?
+    let voteCount: Int?
     
     init(id: Int? = nil, originalTitle: String? = nil, overview: String? = nil, popularity: Float? = nil, posterPath: String? = nil, releaseDate: String? = nil, title: String? = nil, voteAverage: Float? = nil, voteCount: Int? = nil) {
         self.id = id
@@ -43,8 +44,16 @@ struct Movie: Codable {
         case voteCount = "vote_count"
     }
     
-    public var asCellViewModel: AbstractCellViewModel {
+    var asCellViewModel: AbstractCellViewModel {
         return SearchCellViewModel(id: id, thumbnail: "\(AppConfig.shared.getServerConfig().getMediaBaseUrl())/\(posterPath ?? "" )", title: title, overview: overview)
+    }
+    
+    var asDictionary: [String : Any] {
+        return ["id": id, "originalTitle": originalTitle, "overview": overview, "posterPath": posterPath, "title": title]
+    }
+    
+    var asCellConfigurator: CellConfigurator {
+        return SearchItemCellConfig(item: asCellViewModel)
     }
 }
 

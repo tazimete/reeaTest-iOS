@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		035B1FFA8BCF2671A7238A3F /* Pods_ReeaTest_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4736F10026842E2BDD0738C /* Pods_ReeaTest_iOS.framework */; };
-		298638DF28CC6B2900148E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298638DE28CC6B2900148E4C /* ViewController.swift */; };
 		298638E428CC6B2A00148E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298638E328CC6B2A00148E4C /* Assets.xcassets */; };
 		298638F228CC6B2A00148E4C /* ReeaTest_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298638F128CC6B2A00148E4C /* ReeaTest_iOSTests.swift */; };
 		298638FC28CC6B2A00148E4C /* ReeaTest_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298638FB28CC6B2A00148E4C /* ReeaTest_iOSUITests.swift */; };
@@ -107,7 +106,7 @@
 		29863A1028CC6B6F00148E4C /* AbstractUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986399D28CC6B6F00148E4C /* AbstractUsecase.swift */; };
 		29863A1128CC6B6F00148E4C /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639A128CC6B6F00148E4C /* MovieRepository.swift */; };
 		29863A1228CC6B6F00148E4C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639A328CC6B6F00148E4C /* SearchRepository.swift */; };
-		29863A1328CC6B6F00148E4C /* AbstractDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639A528CC6B6F00148E4C /* AbstractDataModel.swift */; };
+		29863A1328CC6B6F00148E4C /* AbstractDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639A528CC6B6F00148E4C /* AbstractDataEntity.swift */; };
 		29863A1428CC6B6F00148E4C /* MovieDetailsParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639A828CC6B6F00148E4C /* MovieDetailsParameter.swift */; };
 		29863A1528CC6B6F00148E4C /* MovieApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639A928CC6B6F00148E4C /* MovieApiRequest.swift */; };
 		29863A1628CC6B6F00148E4C /* SearchApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639AB28CC6B6F00148E4C /* SearchApiRequest.swift */; };
@@ -115,6 +114,11 @@
 		29863A1828CC6B6F00148E4C /* MovieUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639AF28CC6B6F00148E4C /* MovieUsecase.swift */; };
 		29863A1928CC6B6F00148E4C /* SearchUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639B128CC6B6F00148E4C /* SearchUsecase.swift */; };
 		29863A1A28CC6B6F00148E4C /* ShimmerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298639B328CC6B6F00148E4C /* ShimmerHelper.swift */; };
+		29863A2028CC713C00148E4C /* AdaptiveLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A1D28CC713C00148E4C /* AdaptiveLayoutExtension.swift */; };
+		29863A2128CC713C00148E4C /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A1E28CC713C00148E4C /* AdaptiveLayoutConstraint.swift */; };
+		29863A2228CC713C00148E4C /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A1F28CC713C00148E4C /* CGFloat+Extension.swift */; };
+		29863A2428CC7EF700148E4C /* AbstractDomainEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A2328CC7EF700148E4C /* AbstractDomainEntity.swift */; };
+		29863A2728CC7F9D00148E4C /* MoviePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A2628CC7F9D00148E4C /* MoviePresentation.swift */; };
 		2BCE554DD78F496E43320D72 /* Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34BC8775D88691A42EA8DEE2 /* Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework */; };
 		C5AE7B4872B462657741F2B5 /* Pods_ReeaTest_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991A47607B3B73542765A270 /* Pods_ReeaTest_iOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -138,7 +142,6 @@
 
 /* Begin PBXFileReference section */
 		298638D728CC6B2900148E4C /* ReeaTest-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReeaTest-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		298638DE28CC6B2900148E4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		298638E328CC6B2A00148E4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		298638E828CC6B2A00148E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		298638ED28CC6B2A00148E4C /* ReeaTest-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReeaTest-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,7 +243,7 @@
 		2986399D28CC6B6F00148E4C /* AbstractUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractUsecase.swift; sourceTree = "<group>"; };
 		298639A128CC6B6F00148E4C /* MovieRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		298639A328CC6B6F00148E4C /* SearchRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
-		298639A528CC6B6F00148E4C /* AbstractDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractDataModel.swift; sourceTree = "<group>"; };
+		298639A528CC6B6F00148E4C /* AbstractDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractDataEntity.swift; sourceTree = "<group>"; };
 		298639A828CC6B6F00148E4C /* MovieDetailsParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsParameter.swift; sourceTree = "<group>"; };
 		298639A928CC6B6F00148E4C /* MovieApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieApiRequest.swift; sourceTree = "<group>"; };
 		298639AB28CC6B6F00148E4C /* SearchApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchApiRequest.swift; sourceTree = "<group>"; };
@@ -248,6 +251,11 @@
 		298639AF28CC6B6F00148E4C /* MovieUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieUsecase.swift; sourceTree = "<group>"; };
 		298639B128CC6B6F00148E4C /* SearchUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUsecase.swift; sourceTree = "<group>"; };
 		298639B328CC6B6F00148E4C /* ShimmerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmerHelper.swift; sourceTree = "<group>"; };
+		29863A1D28CC713C00148E4C /* AdaptiveLayoutExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutExtension.swift; sourceTree = "<group>"; };
+		29863A1E28CC713C00148E4C /* AdaptiveLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutConstraint.swift; sourceTree = "<group>"; };
+		29863A1F28CC713C00148E4C /* CGFloat+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		29863A2328CC7EF700148E4C /* AbstractDomainEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDomainEntity.swift; sourceTree = "<group>"; };
+		29863A2628CC7F9D00148E4C /* MoviePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresentation.swift; sourceTree = "<group>"; };
 		30BA9215CC36AA2C03221B61 /* Pods-ReeaTest-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeaTest-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ReeaTest-iOSTests/Pods-ReeaTest-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32A13CF9FCCF93A1824CA467 /* Pods-ReeaTest-iOS-ReeaTest-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeaTest-iOS-ReeaTest-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-ReeaTest-iOS-ReeaTest-iOSUITests/Pods-ReeaTest-iOS-ReeaTest-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34BC8775D88691A42EA8DEE2 /* Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +323,7 @@
 				2986395028CC6B6F00148E4C /* AppConfig */,
 				2986394828CC6B6F00148E4C /* Application */,
 				2986390B28CC6B6F00148E4C /* Client */,
+				29863A1B28CC711F00148E4C /* Component */,
 				2986399E28CC6B6F00148E4C /* Data */,
 				2986398D28CC6B6F00148E4C /* Domain */,
 				2986392328CC6B6F00148E4C /* Extension */,
@@ -322,7 +331,6 @@
 				2986395528CC6B6F00148E4C /* Library */,
 				2986392828CC6B6F00148E4C /* Presentation */,
 				2986394B28CC6B6F00148E4C /* Route */,
-				298638DE28CC6B2900148E4C /* ViewController.swift */,
 				298638E328CC6B2A00148E4C /* Assets.xcassets */,
 				298638E828CC6B2A00148E4C /* Info.plist */,
 			);
@@ -520,6 +528,7 @@
 				2986393A28CC6B6F00148E4C /* Abstraction */,
 				2986393C28CC6B6F00148E4C /* Controller */,
 				2986393F28CC6B6F00148E4C /* Cell */,
+				2986394328CC6B6F00148E4C /* CellViewModel */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -544,28 +553,26 @@
 		2986393F28CC6B6F00148E4C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2986394028CC6B6F00148E4C /* Abstraction */,
-				2986394328CC6B6F00148E4C /* ViewModel */,
 				2986394528CC6B6F00148E4C /* Search */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		2986394028CC6B6F00148E4C /* Abstraction */ = {
+		2986394028CC6B6F00148E4C /* GenericCell */ = {
 			isa = PBXGroup;
 			children = (
 				2986394128CC6B6F00148E4C /* GenericCellComponents.swift */,
 				2986394228CC6B6F00148E4C /* CellConfiguratorFactory.swift */,
 			);
-			path = Abstraction;
+			path = GenericCell;
 			sourceTree = "<group>";
 		};
-		2986394328CC6B6F00148E4C /* ViewModel */ = {
+		2986394328CC6B6F00148E4C /* CellViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				2986394428CC6B6F00148E4C /* SearchCellViewModel.swift */,
 			);
-			path = ViewModel;
+			path = CellViewModel;
 			sourceTree = "<group>";
 		};
 		2986394528CC6B6F00148E4C /* Search */ = {
@@ -814,8 +821,8 @@
 		2986399428CC6B6F00148E4C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				2986399528CC6B6F00148E4C /* Movie */,
-				2986399728CC6B6F00148E4C /* SearchResponse.swift */,
+				29863A2528CC7F6F00148E4C /* Movie */,
+				29863A2328CC7EF700148E4C /* AbstractDomainEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -858,7 +865,7 @@
 			isa = PBXGroup;
 			children = (
 				2986399F28CC6B6F00148E4C /* Repository */,
-				298639A428CC6B6F00148E4C /* Model */,
+				298639A428CC6B6F00148E4C /* Entity */,
 				298639A628CC6B6F00148E4C /* Request */,
 				298639AD28CC6B6F00148E4C /* Usecase */,
 			);
@@ -890,12 +897,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		298639A428CC6B6F00148E4C /* Model */ = {
+		298639A428CC6B6F00148E4C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				298639A528CC6B6F00148E4C /* AbstractDataModel.swift */,
+				298639A528CC6B6F00148E4C /* AbstractDataEntity.swift */,
+				2986399728CC6B6F00148E4C /* SearchResponse.swift */,
+				2986399528CC6B6F00148E4C /* Movie */,
 			);
-			path = Model;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		298639A628CC6B6F00148E4C /* Request */ = {
@@ -956,6 +965,33 @@
 				298639B328CC6B6F00148E4C /* ShimmerHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		29863A1B28CC711F00148E4C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2986394028CC6B6F00148E4C /* GenericCell */,
+				29863A1C28CC713C00148E4C /* AdaptiveLayout */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		29863A1C28CC713C00148E4C /* AdaptiveLayout */ = {
+			isa = PBXGroup;
+			children = (
+				29863A1D28CC713C00148E4C /* AdaptiveLayoutExtension.swift */,
+				29863A1E28CC713C00148E4C /* AdaptiveLayoutConstraint.swift */,
+				29863A1F28CC713C00148E4C /* CGFloat+Extension.swift */,
+			);
+			path = AdaptiveLayout;
+			sourceTree = "<group>";
+		};
+		29863A2528CC7F6F00148E4C /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				29863A2628CC7F9D00148E4C /* MoviePresentation.swift */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 		8AB42A6941BB596AE294F877 /* Pods */ = {
@@ -1235,14 +1271,15 @@
 				298639BB28CC6B6F00148E4C /* StubResponseProvider.swift in Sources */,
 				298639E828CC6B6F00148E4C /* RecoverableViewState.swift in Sources */,
 				298639ED28CC6B6F00148E4C /* UIView+Frame.swift in Sources */,
+				29863A2028CC713C00148E4C /* AdaptiveLayoutExtension.swift in Sources */,
 				298639BD28CC6B6F00148E4C /* ApiRequest.swift in Sources */,
 				298639E228CC6B6F00148E4C /* SkeletonLayerBuilder.swift in Sources */,
 				298639D928CC6B6F00148E4C /* Coordinator.swift in Sources */,
 				298639DC28CC6B6F00148E4C /* AppTheme.swift in Sources */,
 				29863A1028CC6B6F00148E4C /* AbstractUsecase.swift in Sources */,
 				298639F328CC6B6F00148E4C /* UILabel+Multiline.swift in Sources */,
+				29863A2228CC713C00148E4C /* CGFloat+Extension.swift in Sources */,
 				298639CF28CC6B6F00148E4C /* BaseViewController.swift in Sources */,
-				298638DF28CC6B2900148E4C /* ViewController.swift in Sources */,
 				29863A0F28CC6B6F00148E4C /* AbstractSearchUsecase.swift in Sources */,
 				298639E928CC6B6F00148E4C /* Int+Whitespaces.swift in Sources */,
 				298639DB28CC6B6F00148E4C /* ServerConfig.swift in Sources */,
@@ -1264,12 +1301,14 @@
 				29863A0B28CC6B6F00148E4C /* AbstractSearchRepository.swift in Sources */,
 				298639BC28CC6B6F00148E4C /* StubbedResponse.swift in Sources */,
 				298639FC28CC6B6F00148E4C /* CollectionSkeletonProtocol.swift in Sources */,
+				29863A2728CC7F9D00148E4C /* MoviePresentation.swift in Sources */,
 				298639DD28CC6B6F00148E4C /* ConfigComponents.swift in Sources */,
 				29863A0828CC6B6F00148E4C /* SkeletonDebug.swift in Sources */,
 				298639BF28CC6B6F00148E4C /* DownloadDataParser.swift in Sources */,
 				298639E128CC6B6F00148E4C /* SkeletonMultilineLayerBuilder.swift in Sources */,
+				29863A2128CC713C00148E4C /* AdaptiveLayoutConstraint.swift in Sources */,
 				298639BE28CC6B6F00148E4C /* Downloader.swift in Sources */,
-				29863A1328CC6B6F00148E4C /* AbstractDataModel.swift in Sources */,
+				29863A1328CC6B6F00148E4C /* AbstractDataEntity.swift in Sources */,
 				298639FD28CC6B6F00148E4C /* SkeletonCollectionDelegate.swift in Sources */,
 				298639FF28CC6B6F00148E4C /* SkeletonTableViewProtocols.swift in Sources */,
 				298639B928CC6B6F00148E4C /* NetworkOperation.swift in Sources */,
@@ -1280,6 +1319,7 @@
 				29863A1928CC6B6F00148E4C /* SearchUsecase.swift in Sources */,
 				29863A1428CC6B6F00148E4C /* MovieDetailsParameter.swift in Sources */,
 				298639D428CC6B6F00148E4C /* SearchCellViewModel.swift in Sources */,
+				29863A2428CC7EF700148E4C /* AbstractDomainEntity.swift in Sources */,
 				29863A1628CC6B6F00148E4C /* SearchApiRequest.swift in Sources */,
 				29863A1A28CC6B6F00148E4C /* ShimmerHelper.swift in Sources */,
 				298639EA28CC6B6F00148E4C /* UIView+Extension.swift in Sources */,

@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
+typealias SearchItemCellConfig = ListCellConfigurator<SearchItemCell, AbstractCellViewModel>
 
 class SearchItemCell : UITableViewCell, ConfigurableCell {
     typealias DataType = AbstractCellViewModel
@@ -50,7 +52,7 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
         let imgView = UIImageView(image: UIImage(named: "img_avatar"))
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
-        imgView.layer.cornerRadius = 45
+//        imgView.layer.cornerRadius = 45
         imgView.isSkeletonable = true
         return imgView
     }()
@@ -65,35 +67,71 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubview(containerView)
-        containerView.addSubview(ivPoster)
-        containerView.addSubview(lblTitle)
-        containerView.addSubview(lblOverview)
-        
-        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: frame.width, height: 0, enableInsets: false)
-        ivPoster.anchor(top: containerView.topAnchor, left:  containerView.leftAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 90, height: 90, enableInsets: false)
-        lblTitle.anchor(top: containerView.topAnchor, left: ivPoster.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 15, width: frame.size.width-30, height: 0, enableInsets: false)
-        lblOverview.anchor(top: lblTitle.bottomAnchor, left: ivPoster.rightAnchor, bottom: ivPoster.bottomAnchor, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 15, paddingRight: 15, width: frame.size.width-30, height: 0, enableInsets: false)
+        addSubViews()
+        addConstraintsToSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    private func addSubViews() {
+        contentView.addSubview(containerView)
+        containerView.addSubview(ivPoster)
+        containerView.addSubview(lblTitle)
+        containerView.addSubview(lblOverview)
+    }
+    
+    private func addConstraintsToSubviews() {
+        containerView.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(contentView.snp.leading).offset(CGFloat(5).adaptiveValue())
+            make.trailing.equalTo(contentView.snp.trailing).offset(-CGFloat(5).adaptiveValue())
+            make.top.equalTo(contentView.snp.top).offset(CGFloat(5).adaptiveValue())
+            make.bottom.equalTo(contentView.snp.bottom).offset(-CGFloat(5).adaptiveValue())
+        }
+        
+        ivPoster.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(containerView.snp.leading).offset(CGFloat(10).adaptiveValue())
+            make.centerY.equalTo(containerView.snp.centerY)
+            make.width.equalTo(CGFloat(90).adaptiveValue())
+            make.height.equalTo(CGFloat(90).adaptiveValue())
+        }
+        
+        lblTitle.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(ivPoster.snp.trailing).offset(CGFloat(10).adaptiveValue())
+            make.trailing.equalTo(containerView.snp.trailing).offset(-CGFloat(10).adaptiveValue())
+            make.top.equalTo(ivPoster.snp.top).offset(CGFloat(10).adaptiveValue())
+            make.bottom.equalTo(lblOverview.snp.top)
+        }
+        
+        lblOverview.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(lblTitle.snp.leading)
+            make.trailing.equalTo(lblTitle.snp.trailing)
+            make.top.equalTo(lblTitle.snp.bottom).offset(CGFloat(5).adaptiveValue())
+            make.bottom.equalTo(containerView.snp.bottom).offset(-CGFloat(10).adaptiveValue())
+        }
+    }
+    
     public func configure(data: DataType) {
+        backgroundColor = .white
+        contentView.backgroundColor = .white
+            
         ShimmerHelper.startShimmerAnimation(view: ivPoster)
         lblTitle.text = data.title
         lblOverview.text = data.overview
         
         let posterUrl = "\(AppConfig.shared.getServerConfig().getMediaBaseUrl())/\(data.thumbnail ?? "" )"
         imageUrlAtCurrentIndex = posterUrl
-        ivPoster.loadImage(from: posterUrl, completionHandler: { [weak self] url,image,isFinished  in
+        
+        ivPoster.loadImage(from: posterUrl, completionHandler: { [weak self] url, image, isFinished  in
             guard let weakSelf = self else {
                 return
             }
             
-            weakSelf.ivPoster.image = image
-            ShimmerHelper.stopShimmerAnimation(view: weakSelf.ivPoster)
+            if weakSelf.imageUrlAtCurrentIndex == url {
+                weakSelf.ivPoster.image = image
+                ShimmerHelper.stopShimmerAnimation(view: weakSelf.ivPoster)
+            }
         })
         
         //apply  change theme
@@ -103,23 +141,23 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
     // when theme change (dark or normal)
     public func applyTheme() {
         switch (traitCollection.userInterfaceStyle) {
-            case .dark:
-                containerView.backgroundColor = .lightGray
-                containerView.layer.borderColor = UIColor.white.cgColor
-                lblTitle.textColor = .white
-                lblOverview.textColor = .white
-                backgroundView?.backgroundColor = .black
-                break
-
-            case .light:
-                containerView.backgroundColor = .white
-                containerView.layer.borderColor = UIColor.black.cgColor
-                lblTitle.textColor = .black
-                lblOverview.textColor = .darkGray
-                break
-
-            default:
-                break
+        case .dark:
+            containerView.backgroundColor = .lightGray
+            containerView.layer.borderColor = UIColor.white.cgColor
+            lblTitle.textColor = .white
+            lblOverview.textColor = .white
+            backgroundView?.backgroundColor = .black
+            break
+            
+        case .light:
+            containerView.backgroundColor = .white
+            containerView.layer.borderColor = UIColor.black.cgColor
+            lblTitle.textColor = .black
+            lblOverview.textColor = .darkGray
+            break
+            
+        default:
+            break
         }
     }
 }

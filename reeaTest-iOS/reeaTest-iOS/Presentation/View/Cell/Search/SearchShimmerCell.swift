@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias ShimmerItemCellConfig = ListCellConfigurator<SearchShimmerCell, AbstractCellViewModel>
+
 class SearchShimmerCell: SearchItemCell {
     typealias DataType = AbstractCellViewModel
     
@@ -20,8 +22,11 @@ class SearchShimmerCell: SearchItemCell {
     
     override func configure(data: DataType) {
         applyTheme()
+        
+        //config views
         containerView.layer.borderWidth = 0
         containerView.layer.borderColor = UIColor.clear.cgColor
+        ivPoster.layer.cornerRadius = 45 
         
         //shmmer skeleton animation
         ShimmerHelper.startShimmerAnimation(viewlist: [lblTitle, lblOverview, ivPoster])
