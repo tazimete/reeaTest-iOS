@@ -115,6 +115,10 @@ class SearchViewController: BaseViewController {
         return false
     }
     
+    override func loadMoreData() {
+        searchMovie(name: "the", year: 2000)
+    }
+    
     override func bindViewModel() {
         searchViewModel = (viewModel as! AbstractSearchViewModel)
         let searchInput = SearchViewModel.SearchInput(searchItemListTrigger: searchTrigger)

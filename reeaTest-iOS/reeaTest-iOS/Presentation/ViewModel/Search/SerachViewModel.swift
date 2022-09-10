@@ -30,6 +30,7 @@ class SearchViewModel: AbstractSearchViewModel {
     }
     
     let usecase: AbstractUsecase
+    var currentPage = 0
     
     init(usecase: AbstractSearchUsecase) {
         self.usecase = usecase
@@ -54,10 +55,10 @@ class SearchViewModel: AbstractSearchViewModel {
                     
                        return Observable.just(SearchApiRequest.ResponseType())
                     })
-        }).subscribe(onNext: {
-            response in
-            
-            searchListResponse.accept(response.results ?? [])
+        }).subscribe(onNext: { [weak self] response in
+            self?.currentPage += 1 
+            var values =  (self?.currentPage).unwrappedValue > 1 ? searchListResponse.value : []
+            searchListResponse.accept(values + (response.results ?? []))
         }, onError: { [weak self] error in
             errorResponse.accept(error as? NetworkError)
         }, onCompleted: nil, onDisposed: nil)

@@ -121,6 +121,7 @@
 		29863A2728CC7F9D00148E4C /* MoviePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A2628CC7F9D00148E4C /* MoviePresentation.swift */; };
 		29863A2928CC88E700148E4C /* ShimmerMoviePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A2828CC88E700148E4C /* ShimmerMoviePresentation.swift */; };
 		29863A2B28CC892400148E4C /* ShimmerMoviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A2A28CC892400148E4C /* ShimmerMoviewCellViewModel.swift */; };
+		29863A2D28CC9BFB00148E4C /* Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29863A2C28CC9BFB00148E4C /* Optionals.swift */; };
 		2BCE554DD78F496E43320D72 /* Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34BC8775D88691A42EA8DEE2 /* Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework */; };
 		C5AE7B4872B462657741F2B5 /* Pods_ReeaTest_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991A47607B3B73542765A270 /* Pods_ReeaTest_iOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -260,6 +261,7 @@
 		29863A2628CC7F9D00148E4C /* MoviePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresentation.swift; sourceTree = "<group>"; };
 		29863A2828CC88E700148E4C /* ShimmerMoviePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerMoviePresentation.swift; sourceTree = "<group>"; };
 		29863A2A28CC892400148E4C /* ShimmerMoviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerMoviewCellViewModel.swift; sourceTree = "<group>"; };
+		29863A2C28CC9BFB00148E4C /* Optionals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optionals.swift; sourceTree = "<group>"; };
 		30BA9215CC36AA2C03221B61 /* Pods-ReeaTest-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeaTest-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ReeaTest-iOSTests/Pods-ReeaTest-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32A13CF9FCCF93A1824CA467 /* Pods-ReeaTest-iOS-ReeaTest-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeaTest-iOS-ReeaTest-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-ReeaTest-iOS-ReeaTest-iOSUITests/Pods-ReeaTest-iOS-ReeaTest-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34BC8775D88691A42EA8DEE2 /* Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeaTest_iOS_ReeaTest_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,9 +330,9 @@
 				2986394828CC6B6F00148E4C /* Application */,
 				2986390B28CC6B6F00148E4C /* Client */,
 				29863A1B28CC711F00148E4C /* Component */,
+				2986392328CC6B6F00148E4C /* Extension */,
 				2986399E28CC6B6F00148E4C /* Data */,
 				2986398D28CC6B6F00148E4C /* Domain */,
-				2986392328CC6B6F00148E4C /* Extension */,
 				298639B228CC6B6F00148E4C /* Helper */,
 				2986395528CC6B6F00148E4C /* Library */,
 				2986392828CC6B6F00148E4C /* Presentation */,
@@ -451,6 +453,7 @@
 				2986392528CC6B6F00148E4C /* UIView+Extensions.swift */,
 				2986392628CC6B6F00148E4C /* UIImage+Extension.swift */,
 				2986392728CC6B6F00148E4C /* Codable+Extension.swift */,
+				29863A2C28CC9BFB00148E4C /* Optionals.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1325,6 +1328,7 @@
 				29863A1928CC6B6F00148E4C /* SearchUsecase.swift in Sources */,
 				29863A1428CC6B6F00148E4C /* MovieDetailsParameter.swift in Sources */,
 				298639D428CC6B6F00148E4C /* SearchCellViewModel.swift in Sources */,
+				29863A2D28CC9BFB00148E4C /* Optionals.swift in Sources */,
 				29863A2428CC7EF700148E4C /* AbstractDomainEntity.swift in Sources */,
 				29863A1628CC6B6F00148E4C /* SearchApiRequest.swift in Sources */,
 				29863A1A28CC6B6F00148E4C /* ShimmerHelper.swift in Sources */,
