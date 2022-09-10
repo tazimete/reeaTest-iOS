@@ -145,11 +145,11 @@ class SearchViewController: BaseViewController {
     
     //populate table view cell
     private func populateTableViewCell(viewModel: AbstractCellViewModel, indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-        var item: CellConfigurator = ShimmerItemCellConfig.init(item: viewModel)
+        var item: CellConfigurator = SearchItemCellConfig.init(item: viewModel)
         
         // check actual data exists or not, to hide shimmer cell
-        if viewModel.id != nil {
-            item = SearchItemCellConfig.init(item: viewModel)
+        if viewModel.id == nil {
+            item = ShimmerItemCellConfig.init(item: viewModel)
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId, for: indexPath)
