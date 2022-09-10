@@ -29,6 +29,7 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 18)
         lbl.textAlignment = .left
+        lbl.text = "Movie title"
         lbl.numberOfLines = 1
         lbl.isSkeletonable = true
         lbl.skeletonLineSpacing = 10
@@ -41,6 +42,7 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
         lbl.textColor = .darkGray
         lbl.font = UIFont.systemFont(ofSize: 15)
         lbl.textAlignment = .left
+        lbl.text = "Movie description"
         lbl.numberOfLines = 2
         lbl.isSkeletonable = true
         lbl.skeletonLineSpacing = 10
@@ -107,7 +109,7 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
         lblOverview.snp.makeConstraints { (make) -> Void in
             make.leading.equalTo(lblTitle.snp.leading)
             make.trailing.equalTo(lblTitle.snp.trailing)
-            make.top.equalTo(lblTitle.snp.bottom).offset(CGFloat(5).adaptiveValue())
+            make.top.equalTo(lblTitle.snp.bottom).offset(CGFloat(0).adaptiveValue())
             make.bottom.equalTo(containerView.snp.bottom).offset(-CGFloat(10).adaptiveValue())
         }
     }

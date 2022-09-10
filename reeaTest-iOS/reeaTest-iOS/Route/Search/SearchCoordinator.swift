@@ -20,6 +20,7 @@ class SearchCoordinator: Coordinator {
         let usecase = SearchUsecase(repository: repository)
         let viewModel = SearchViewModel(usecase: usecase)
         let vc = SearchViewController(viewModel: viewModel)
+        vc.coordinator = self
         self.navigationController.pushViewController(vc, animated: true)
     }
     

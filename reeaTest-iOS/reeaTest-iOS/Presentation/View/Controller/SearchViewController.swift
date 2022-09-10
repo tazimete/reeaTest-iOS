@@ -12,6 +12,7 @@ import SnapKit
 
 class SearchViewController: BaseViewController {
     // MARK: Non UI Proeprties
+    public weak var coordinator: SearchCoordinator?
     public var searchViewModel: AbstractSearchViewModel!
     private let disposeBag = DisposeBag()
     private let searchTrigger = PublishSubject<SearchViewModel.SearchInputModel>()
@@ -147,9 +148,9 @@ class SearchViewController: BaseViewController {
         var item: CellConfigurator = ShimmerItemCellConfig.init(item: viewModel)
         
         // check actual data exists or not, to hide shimmer cell
-//        if viewModel.id != nil {
-//            item = SearchItemCellConfig.init(item: viewModel)
-//        }
+        if viewModel.id != nil {
+            item = SearchItemCellConfig.init(item: viewModel)
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId, for: indexPath)
         item.configure(cell: cell)
@@ -185,7 +186,7 @@ class SearchViewController: BaseViewController {
     }
     
     private func navigateToDetailsController(with movie: Movie) {
-        (view.window?.windowScene?.delegate as! SceneDelegate).rootCoordinator.showDetailsController(movie: movie)
+        coordinator?.showDetailsController(movie: movie)
     }
     
     @objc func didTapSearchButton(sender : AnyObject){
