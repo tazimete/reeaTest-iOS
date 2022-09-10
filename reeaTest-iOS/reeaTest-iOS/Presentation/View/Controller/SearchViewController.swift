@@ -112,11 +112,23 @@ class SearchViewController: BaseViewController {
     
     // MARK: Pagination 
     override func hasMoreData() -> Bool {
-        return false
+        return true
     }
     
     override func loadMoreData() {
         searchMovie(name: "the", year: 2000)
+    }
+    
+    override func getLastVisibleItem() -> IndexPath {
+        return tableView.indexPathsForVisibleRows?.last ?? IndexPath(row: 0, section: 0)
+    }
+    
+    override func getTotalDataCount() -> Int {
+        return searchViewModel.totalDataCount
+    }
+    
+    override func getPaginationOffset() -> Int {
+        return 5
     }
     
     override func bindViewModel() {

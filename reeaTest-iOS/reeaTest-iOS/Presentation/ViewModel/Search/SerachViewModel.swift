@@ -31,6 +31,7 @@ class SearchViewModel: AbstractSearchViewModel {
     
     let usecase: AbstractUsecase
     var currentPage = 0
+    var totalDataCount = 0
     
     init(usecase: AbstractSearchUsecase) {
         self.usecase = usecase
@@ -46,7 +47,9 @@ class SearchViewModel: AbstractSearchViewModel {
             }
             
             //show shimmer
-            searchListResponse.accept(Array<SearchApiRequest.ItemType>(repeating: SearchApiRequest.ItemType(), count: 9))
+            if weakSelf.currentPage == 0 {
+                searchListResponse.accept(Array<SearchApiRequest.ItemType>(repeating: SearchApiRequest.ItemType(), count: 9))
+            }
             
             //fetch movie list
             return weakSelf.searchData(query: inputModel.query, year: inputModel.year)
@@ -59,6 +62,7 @@ class SearchViewModel: AbstractSearchViewModel {
             self?.currentPage += 1 
             var values =  (self?.currentPage).unwrappedValue > 1 ? searchListResponse.value : []
             searchListResponse.accept(values + (response.results ?? []))
+            self?.totalDataCount = searchListResponse.value.count
         }, onError: { [weak self] error in
             errorResponse.accept(error as? NetworkError)
         }, onCompleted: nil, onDisposed: nil)
