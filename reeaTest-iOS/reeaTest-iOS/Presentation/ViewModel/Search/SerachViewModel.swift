@@ -16,6 +16,7 @@ class SearchViewModel: AbstractSearchViewModel {
     struct SearchInputModel {
         let query: String
         let year: Int
+        let page: Int
     }
     
     // This struct will be used get event with data from viewcontroller
@@ -30,7 +31,8 @@ class SearchViewModel: AbstractSearchViewModel {
     }
     
     let usecase: AbstractUsecase
-    var currentPage = 0
+    var currentPage = 1
+    var totalPage = 0
     var totalDataCount = 0
     
     init(usecase: AbstractSearchUsecase) {
@@ -47,22 +49,27 @@ class SearchViewModel: AbstractSearchViewModel {
             }
             
             //show shimmer
-            if weakSelf.currentPage == 0 {
+            if weakSelf.currentPage == 1 {
                 searchListResponse.accept(Array<SearchApiRequest.ItemType>(repeating: SearchApiRequest.ItemType(), count: 9))
             }
             
             //fetch movie list
-            return weakSelf.searchData(query: inputModel.query, year: inputModel.year)
+            return weakSelf.searchData(query: inputModel.query, year: inputModel.year, page: inputModel.page)
                    .catch({ error in
                        errorResponse.accept(error as? NetworkError)
                     
                        return Observable.just(SearchApiRequest.ResponseType())
                     })
         }).subscribe(onNext: { [weak self] response in
-            self?.currentPage += 1 
-            var values =  (self?.currentPage).unwrappedValue > 1 ? searchListResponse.value : []
+            guard let weakSelf = self else {
+                return
+            }
+            
+            weakSelf.totalPage = response.totalPages.unwrappedValue
+            var values =  weakSelf.currentPage > 1 ? searchListResponse.value : []
             searchListResponse.accept(values + (response.results ?? []))
             self?.totalDataCount = searchListResponse.value.count
+            weakSelf.currentPage += 1
         }, onError: { [weak self] error in
             errorResponse.accept(error as? NetworkError)
         }, onCompleted: nil, onDisposed: nil)
@@ -70,7 +77,7 @@ class SearchViewModel: AbstractSearchViewModel {
         return SearchOutput.init(searchItems: searchListResponse, errorTracker: errorResponse)
     }
     
-    func searchData(query: String, year: Int) -> Observable<SearchApiRequest.ResponseType> {
-        return (usecase as! AbstractSearchUsecase).search(query: query, year: year)
+    func searchData(query: String, year: Int, page: Int) -> Observable<SearchApiRequest.ResponseType> {
+        return (usecase as! AbstractSearchUsecase).search(query: query, year: year, page: page)
     }
 }

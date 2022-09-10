@@ -10,5 +10,5 @@ import RxSwift
 
 /* This is Search repository abstraction extented from AbstractRepository. Which will be used to get search related from api client/server response*/
 protocol AbstractSearchRepository: AbstractRepository {
-     func get(query: String, year: Int) -> Observable<SearchApiRequest.ResponseType>
+     func get(query: String, year: Int, page: Int) -> Observable<SearchApiRequest.ResponseType>
 }

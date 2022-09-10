@@ -16,7 +16,7 @@ class SearchUsecase: AbstractSearchUsecase {
         self.repository = repository
     }
     
-    public func search(query: String, year: Int) -> Observable<SearchApiRequest.ResponseType> {
-        return (repository as! AbstractSearchRepository).get(query: query, year: year)
+    public func search(query: String, year: Int, page: Int) -> Observable<SearchApiRequest.ResponseType> {
+        return (repository as! AbstractSearchRepository).get(query: query, year: year, page: page)
     }
 }

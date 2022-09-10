@@ -112,7 +112,7 @@ class SearchViewController: BaseViewController {
     
     // MARK: Pagination 
     override func hasMoreData() -> Bool {
-        return true
+        return searchViewModel.currentPage <= searchViewModel.totalPage
     }
     
     override func loadMoreData() {
@@ -194,7 +194,7 @@ class SearchViewController: BaseViewController {
     
     public func searchMovie(name: String, year: Int) {
         hideNoDataMessageView()
-        searchTrigger.onNext(SearchViewModel.SearchInputModel(query: name, year: year))
+        searchTrigger.onNext(SearchViewModel.SearchInputModel(query: name, year: year, page: searchViewModel.currentPage))
     }
     
     private func hideNoDataMessageView() {

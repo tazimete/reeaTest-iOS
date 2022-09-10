@@ -16,7 +16,7 @@ class SearchRepository: AbstractSearchRepository {
         self.apiClient = apiClient
     }
     
-    public func get(query: String, year: Int) -> Observable<SearchApiRequest.ResponseType> {
-        return apiClient.send(apiRequest: SearchApiRequest.searchMovie(params: MoviewSearchParams(query: query, year: year)), type: SearchApiRequest.ResponseType.self)
+    public func get(query: String, year: Int, page: Int) -> Observable<SearchApiRequest.ResponseType> {
+        return apiClient.send(apiRequest: SearchApiRequest.searchMovie(params: MoviewSearchParams(query: query, year: year, page: page)), type: SearchApiRequest.ResponseType.self)
     }
 }
