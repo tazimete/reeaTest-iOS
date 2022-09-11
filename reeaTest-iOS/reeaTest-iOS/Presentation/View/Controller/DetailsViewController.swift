@@ -11,6 +11,7 @@ import RxCocoa
 
 class DetailsViewController: BaseViewController {
     // MARK: Non UI Objects
+    public weak var coordinator: SearchCoordinator?
     public var movie: Movie!
     public var movieViewModel: AbstractMovieViewModel!
     private let disposeBag = DisposeBag()

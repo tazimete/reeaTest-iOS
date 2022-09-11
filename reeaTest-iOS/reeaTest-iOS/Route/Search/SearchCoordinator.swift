@@ -29,6 +29,7 @@ class SearchCoordinator: Coordinator {
         let usecase = MovieUsecase(repository: repository)
         let viewModel = MovieViewModel(usecase: usecase)
         let vc = DetailsViewController.instantiate(viewModel: viewModel)
+        vc.coordinator = self 
         vc.movie = movie
         self.navigationController.pushViewController(vc, animated: true)
     }
