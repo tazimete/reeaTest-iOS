@@ -22,16 +22,14 @@ class SearchShimmerCell: SearchItemCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        ivPoster.image = nil
-//        lblTitle.text = ""
-//        lblOverview.text = ""
         
-//        ShimmerHelper.stopShimmerAnimation(viewlist: [lblTitle, lblOverview, ivPoster])
+        ShimmerHelper.stopShimmerAnimation(viewlist: [lblTitle, lblOverview, ivPoster])
     }
     
     
     override func configure(data: DataType) {
         applyTheme()
+        layoutIfNeeded()
         
         //config views
         containerView.layer.borderWidth = 0

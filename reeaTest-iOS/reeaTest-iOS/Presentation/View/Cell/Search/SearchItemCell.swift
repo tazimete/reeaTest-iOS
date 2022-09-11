@@ -29,7 +29,7 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 18)
         lbl.textAlignment = .left
-        lbl.text = "Movie title"
+        lbl.text = "Movie \ntitle"
         lbl.numberOfLines = 1
         lbl.isSkeletonable = true
         lbl.skeletonLineSpacing = 10
@@ -42,7 +42,7 @@ class SearchItemCell : UITableViewCell, ConfigurableCell {
         lbl.textColor = .darkGray
         lbl.font = UIFont.systemFont(ofSize: 15)
         lbl.textAlignment = .left
-        lbl.text = "Movie description"
+        lbl.text = "Movie \n description"
         lbl.numberOfLines = 2
         lbl.isSkeletonable = true
         lbl.skeletonLineSpacing = 10

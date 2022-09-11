@@ -192,7 +192,7 @@ class SearchViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    public func searchMovie(name: String, year: Int) {
+     func searchMovie(name: String, year: Int) {
         hideNoDataMessageView()
         searchTrigger.onNext(SearchViewModel.SearchInputModel(query: name, year: year, page: searchViewModel.currentPage))
     }
